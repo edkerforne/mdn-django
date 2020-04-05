@@ -88,4 +88,4 @@ class Author(models.Model):
     
     def __str__(self):
         """String representing the model object."""
-        return f'{first_name} {last_name}'
+        return f'{self.first_name} {self.last_name}'
