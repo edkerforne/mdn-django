@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>Home - Local Library</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="heading page-title">Home</h1>
+<p>Welcome to Local Library, a website developed by <a href="https://github.com/edkerforne">Edwin Kerforne</a>!</p>
+<p>This is a simple website made to learn the basics of Django.</p>
+
+<h2 class="heading">Statistics</h2>
+<ul class="plain-list">
+  <li><a class="text-group" href="/catalog/books"><span class="text-emphasis">{{ num_books }}</span> books</a></li>
+  <li><a class="text-group" href="/catalog/copies"><span class="text-emphasis">{{ num_instances }}</span> copies</a>
+  </li>
+  <li><a class="text-group" href="/catalog/copies"><span class="text-emphasis">{{ num_available }}</span> available
+      copies</a></li>
+  <li><a class="text-group" href="/catalog/authors"><span class="text-emphasis">{{ num_authors }}</span> authors</a>
+  </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,144 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fonts/Ubuntu-Italic.ttf');
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik-Regular.ttf');
+  font-weight: normal;
+}
+
+:root {
+  font-size: 16px;
+}
+
+/*
+ * Minimal reset and base setup
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #ccd6eb;
+  font: normal 1rem 'Ubuntu', sans-serif;
+  line-height: 1.25;
+  margin: 1rem;
+}
+
+/*
+ * Utility/general classes
+ */
+
+/* Links */
+a {
+  color: #09ac5a;
+  position: relative;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #037e78;
+}
+
+a::after {
+  background-color: #00b359;
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transition: transform 250ms ease-out;
+  width: 100%;
+}
+
+a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Headings */
+.heading {
+  font-family: 'Rubik';
+  font-weight: normal;
+}
+
+/* Main content title */
+.page-title {
+  font-size: 2rem;
+}
+
+/* Larger text for sidebar headings */
+.nav-heading {
+  font-size: 1.25rem;
+}
+
+/* Unstyled list, mainly for sidebar nav */
+.plain-list {
+  list-style: none;
+  padding: 0 0 0 1rem;
+}
+
+/*
+ * Vertically centered text/link groups
+ * e.g. record counts on home page
+ */
+
+.text-group {
+  align-items: center;
+  display: inline-flex;
+}
+
+.text-emphasis {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+/*
+ * Whole page wrapper
+ */
+
+#page {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
+}
+
+/*
+ * Sidebar & content box
+ */
+
+/* Sidebar & content wrapper */
+@media only screen and (min-width: 720px) {
+  .group {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+.sidebar {
+  width: 100%;
+}
+
+.content {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 0.5rem 1.5rem;
+  width: 100%;
+}

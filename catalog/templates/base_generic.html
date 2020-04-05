@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {% block title %}
+  <title>Local Library</title>
+  {% endblock %}
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+  <div id="page">
+    <header id="header">
+      <h1 class="heading">Local Library</h1>
+      <p>A Django website</p>
+    </header>
+    <div class="group">
+      <aside class="sidebar">
+        {% block sidebar %}
+        <ul class="sidebar-nav plain-list">
+          <li><a href="{% url 'index' %}">Home</a></li>
+        </ul>
+        <h2 class="heading nav-heading">Browse</h2>
+        <ul class="sidebar-nav plain-list">
+          <li><a href="">Books</a></li>
+          <li><a href="">Authors</a></li>
+        </ul>
+        {% endblock %}
+      </aside>
+
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
