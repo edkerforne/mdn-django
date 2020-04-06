@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+<title>{{ author }} - Local Library</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="heading">{{ author }}</h1>
+{% if author.date_of_birth or author.date_of_death %}
+({% if author.date_of_birth %}{{ author.date_of_birth }}{% endif %}–{% if author.date_of_death %}{{ author.date_of_death }}{% endif %})
+{% endif %}
+
+<h2 class="heading">Books by this author</h2>
+{% if author.book_set.all %}
+{% for book in author.book_set.all %}
+<hr />
+<p><em><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></em></p>
+<p>{{ book.summary }}</p>
+{% endfor %}
+{% else %}
+<p>This author has no books in the library.</p>
+{% endif %}
+{% endblock %}

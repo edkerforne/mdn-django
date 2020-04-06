@@ -27,14 +27,32 @@
         </ul>
         <h2 class="heading nav-heading">Browse</h2>
         <ul class="sidebar-nav plain-list">
-          <li><a href="">Books</a></li>
-          <li><a href="">Authors</a></li>
+          <li><a href="{% url 'books' %}">Books</a></li>
+          <li><a href="{% url 'authors' %}">Authors</a></li>
         </ul>
         {% endblock %}
       </aside>
 
       <main class="content">
         {% block content %}{% endblock %}
+
+        {% block pagination %}
+        {% if is_paginated %}
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+          <a class="back" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">← back</a>
+          {% endif %}
+
+          <span class="page-current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </span>
+
+          {% if page_obj.has_next %}
+          <a class="next" href="{{ request.path }}?page={{ page_obj.next_page_number }}">next →</a>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% endblock %}
       </main>
     </div>
   </div>

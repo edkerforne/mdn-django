@@ -25,6 +25,9 @@
 
 :root {
   font-size: 16px;
+  --color-main: #008730;
+  --color-alt: #124f59;
+  --color-muted: #abafc4;
 }
 
 /*
@@ -36,7 +39,6 @@
 }
 
 body {
-  background: #ccd6eb;
   font: normal 1rem 'Ubuntu', sans-serif;
   line-height: 1.25;
   margin: 1rem;
@@ -46,19 +48,28 @@ body {
  * Utility/general classes
  */
 
+p {
+  margin: 0.75rem 0;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid var(--color-muted);
+}
+
 /* Links */
 a {
-  color: #09ac5a;
+  color: var(--color-main);
   position: relative;
   text-decoration: none;
 }
 
 a:hover {
-  color: #037e78;
+  color: var(--color-alt);
 }
 
 a::after {
-  background-color: #00b359;
+  background-color: var(--color-alt);
   bottom: 0;
   content: "";
   height: 1px;
@@ -77,6 +88,7 @@ a:hover::after {
 .heading {
   font-family: 'Rubik';
   font-weight: normal;
+  margin: 0.5rem 0;
 }
 
 /* Main content title */
@@ -86,12 +98,13 @@ a:hover::after {
 
 /* Larger text for sidebar headings */
 .nav-heading {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 /* Unstyled list, mainly for sidebar nav */
 .plain-list {
   list-style: none;
+  margin: 0.5rem 0;
   padding: 0 0 0 1rem;
 }
 
@@ -106,7 +119,7 @@ a:hover::after {
 }
 
 .text-emphasis {
-  font-size: 2rem;
+  font-size: 1.75rem;
   margin-right: 0.5rem;
 }
 
@@ -128,17 +141,57 @@ a:hover::after {
 @media only screen and (min-width: 720px) {
   .group {
     display: grid;
+    gap: 1rem;
     grid-template-columns: 1fr 4fr;
   }
 }
 
 .sidebar {
+  padding-top: 1rem;
   width: 100%;
 }
 
 .content {
-  background: #ffffff;
   border-radius: 4px;
   padding: 0.5rem 1.5rem;
   width: 100%;
+}
+
+/*
+ * Book status badge
+ */
+
+.badge {
+  border-radius: 2px;
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 2px 1rem;
+}
+
+.available {
+  background: var(--color-main);
+}
+
+.loaned {
+  background: #ce7a0d;
+}
+
+.maintenance {
+  background: #b91717;
+}
+
+/*
+ * Pagination
+ */
+
+.pagination {
+  font-size: 0.875rem;
+}
+
+.back {
+  margin-right: 0.5rem;
+}
+
+.next {
+  margin-left: 0.5rem;
 }

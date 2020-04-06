@@ -11,12 +11,12 @@
 
 <h2 class="heading">Statistics</h2>
 <ul class="plain-list">
-  <li><a class="text-group" href="/catalog/books"><span class="text-emphasis">{{ num_books }}</span> books</a></li>
-  <li><a class="text-group" href="/catalog/copies"><span class="text-emphasis">{{ num_instances }}</span> copies</a>
+  <li><a class="text-group" href="{% url 'books' %}"><span class="text-emphasis">{{ num_books }}</span> books</a></li>
+  <li><a class="text-group" href="{% url 'books' %}"><span class="text-emphasis">{{ num_instances }}</span> copies</a>
   </li>
-  <li><a class="text-group" href="/catalog/copies"><span class="text-emphasis">{{ num_available }}</span> available
+  <li><a class="text-group" href="{% url 'books' %}"><span class="text-emphasis">{{ num_available }}</span> available
       copies</a></li>
-  <li><a class="text-group" href="/catalog/authors"><span class="text-emphasis">{{ num_authors }}</span> authors</a>
+  <li><a class="text-group" href="{% url 'authors' %}"><span class="text-emphasis">{{ num_authors }}</span> authors</a>
   </li>
 </ul>
 {% endblock %}
