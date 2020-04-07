@@ -19,4 +19,5 @@
   <li><a class="text-group" href="{% url 'authors' %}"><span class="text-emphasis">{{ num_authors }}</span> authors</a>
   </li>
 </ul>
+<p>You have visited this page {{ num_visits }} {% if num_visits == 1 %}time{% else %}times{% endif %}.</p>
 {% endblock %}
