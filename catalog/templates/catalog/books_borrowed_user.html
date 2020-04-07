@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 class="heading">Books you borrowed</h1>
+
+{% if bookinstance_list %}
+<ul>
+  {% for copy in bookinstance_list %}
+  <li>
+    <a href="{% url 'book-detail' copy.book.pk %}">
+      <em>{{ copy.book.title }}</em>
+    </a>
+    (<span{% if copy.is_overdue %} class="text-danger" {% endif %}>{{ copy.due }}</span>)
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>You have no borrowed books.</p>
+{% endif %}
+{% endblock  %}
