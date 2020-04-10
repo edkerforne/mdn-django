@@ -14,6 +14,8 @@
 </head>
 
 <body>
+  {% include "icons.html" %}
+
   <div id="page">
     <header id="header">
       <h1 class="heading">Local Library</h1>
@@ -40,7 +42,14 @@
           {% endif %}
         </ul>
         <ul class="sidebar-nav plain-list">
-          <li><a href="{% url 'logout' %}?next={{ request.path }}">Log out</a></li>
+          <li>
+            <a class="text-danger" href="{% url 'logout' %}?next={{ request.path }}">
+              <svg class="icon">
+                <use xlink:href="#logout" />
+              </svg>
+              Log out
+            </a>
+          </li>
         </ul>
         {% else %}
         <ul class="sidebar-nav plain-list">

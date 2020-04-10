@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1 class="heading">Renew <em>{{ book_instance.book.title }}</em></h1>
+<p>Loaned to <strong>{{ book_instance.borrower }}</strong></p>
+<p {% if book_instance.is_overdue %}class="text-danger" {% endif %}>Due back {{ book_instance.due }}</p>
+
+<form method="POST" action="" class="form">
+  {% csrf_token %}
+
+  {% for field in form %}
+  {{ field.label_tag }}
+  <div class="input-group{% if field.errors %} error{% endif %}">
+    {{ field }}
+    {% if field.help_text %}
+    {% endif %}
+    {% if field.errors %}
+    <div class="error-wrapper">
+      <svg class="icon">
+        <use xlink:href="#warning" />
+      </svg>
+      {{ field.errors }}
+    </div>
+    {% endif %}
+    <p class="helptext">{{ field.help_text }}</p>
+  </div>
+  {% endfor %}
+
+  <input type="submit" value="Renew">
+</form>
+{% endblock  %}

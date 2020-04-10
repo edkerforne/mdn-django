@@ -11,6 +11,14 @@
       <em>{{ copy.book.title }}</em>
     </a>
     (<span{% if copy.is_overdue %} class="text-danger" {% endif %}>{{ copy.due }}</span>) - {{ copy.borrower }}
+      {% if perms.catalog.can_mark_returned %}
+      <a href="{% url 'renew-book-librarian' copy.id %}">
+        <svg class="icon">
+          <use xlink:href="#refresh" />
+        </svg>
+        Renew
+      </a>
+      {% endif %}
   </li>
   {% endfor %}
 </ul>

@@ -6,6 +6,18 @@
 
 {% block content %}
 <h1 class="heading">Our books</h1>
+
+{% if perms.catalog.add_book %}
+<p>
+  <a class="button" href="{% url 'book-create' %}">
+    <svg class="icon">
+      <use xlink:href="#plus" />
+    </svg>
+    Add book
+  </a>
+</p>
+{% endif %}
+
 {% if book_list %}
 <ul>
   {% for book in book_list %}

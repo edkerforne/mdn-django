@@ -27,8 +27,11 @@
   font-size: 16px;
   --color-main: #008730;
   --color-alt: #124f59;
-  --color-muted: #abafc4;
+  --color-muted: #5c5d63;
+  --color-subtle: #abafc4;
+  --color-warning: #ce7a0d;
   --color-danger: #b91717;
+  --color-danger-hover: #610010;
 }
 
 /*
@@ -55,18 +58,30 @@ p {
 
 hr {
   border: 0;
-  border-bottom: 1px solid var(--color-muted);
+  border-bottom: 1px solid var(--color-subtle);
+}
+
+/* SVG icons */
+.icon {
+  height: 20px;
+  margin-right: 0.25rem;
+  width: 20px;
 }
 
 /* Links */
 a {
+  align-items: center;
+  display: inline-flex;
   color: var(--color-main);
+  cursor: pointer;
+  fill: var(--color-main);
   position: relative;
   text-decoration: none;
 }
 
 a:hover {
   color: var(--color-alt);
+  fill: var(--color-alt);
 }
 
 a::after {
@@ -88,6 +103,16 @@ a:hover::after {
 /* Text colors */
 .text-danger {
   color: var(--color-danger);
+  fill: var(--color-danger);
+}
+
+a.text-danger:hover {
+  color: var(--color-danger-hover);
+  fill: var(--color-danger-hover);
+}
+
+a.text-danger::after {
+  background: var(--color-danger-hover);
 }
 
 /* Headings */
@@ -169,7 +194,7 @@ a:hover::after {
 
 .badge {
   border-radius: 2px;
-  color: #fff;
+  color: #ffffff;
   font-size: 0.875rem;
   padding: 2px 1rem;
 }
@@ -179,7 +204,7 @@ a:hover::after {
 }
 
 .loaned {
-  background: #ce7a0d;
+  background: var(--color-warning);
 }
 
 .maintenance {
@@ -206,30 +231,115 @@ a:hover::after {
  * Forms
  */
 
-input {
-  border: 1px solid #9fa0ad;
+.form {
+  align-items: baseline;
+  display: grid;
+  gap: 0.5rem 1rem;
+}
+
+@media only screen and (min-width:720px) {
+  .form {
+    grid-template-columns: auto 1fr;
+  }
+}
+
+.input-group {
   border-radius: 4px;
-  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group.error {
+  background: #ffecb3;
+  padding-bottom: 0.5rem;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid var(--color-subtle);
+  border-radius: 4px;
+  font: normal 0.875rem 'Ubuntu';
   padding: 0.5rem;
+}
+
+textarea {
+  resize: vertical;
 }
 
 input:focus {
   border: 2px solid var(--color-main);
 }
 
+.error>input {
+  border-color: var(--color-warning);
+}
+
+.helptext {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.error-wrapper {
+  align-items: center;
+  color: var(--color-warning);
+  display: flex;
+  list-style: none;
+  margin: 0 0.5rem;
+}
+
+.error-wrapper>.icon {
+  fill: var(--color-warning);
+}
+
+.errorlist {
+  font-size: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.error>.helptext {
+  margin: 0 0.5rem;
+}
+
 button,
+.button,
 input[type=submit] {
+  align-items: center;
   background: var(--color-main);
   border: 0;
   border-radius: 4px;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
-  font-weight: bold;
-  margin: 0.5rem 0 0 0;
+  display: inline-flex;
+  fill: #ffffff;
+  font-size: 0.875rem;
+  grid-column: 1 / -1;
+  margin: 0;
   padding: 0.5rem 2rem;
 }
 
+.button:after {
+  width: 0;
+}
+
 button:hover,
+.button:hover,
 input[type=submit]:hover {
   background: var(--color-alt);
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+button.button-delete,
+input.button-delete {
+  background: var(--color-danger);
+}
+
+button.button-delete:hover,
+input.button-delete:hover {
+  background: var(--color-danger-hover);
 }

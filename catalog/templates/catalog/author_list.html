@@ -6,6 +6,18 @@
 
 {% block content %}
 <h1 class="heading">Authors</h1>
+
+{% if perms.catalog.add_author %}
+<p>
+  <a class="button" href="{% url 'author-create' %}">
+    <svg class="icon">
+      <use xlink:href="#plus" />
+    </svg>
+    Add author
+  </a>
+</p>
+{% endif %}
+
 {% if author_list %}
 <ul>
   {% for author in author_list %}

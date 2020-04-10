@@ -6,9 +6,28 @@
 
 {% block content %}
 <h1 class="heading">{{ author }}</h1>
+
 {% if author.date_of_birth or author.date_of_death %}
 ({% if author.date_of_birth %}{{ author.date_of_birth }}{% endif %}–{% if author.date_of_death %}{{ author.date_of_death }}{% endif %})
 {% endif %}
+
+<p>
+  {% if perms.catalog.change_author %}
+  <a href="{% url 'author-update' author.pk %}">
+    <svg class="icon">
+      <use xlink:href="#pencil" />
+    </svg>
+    Update
+  </a>
+  {% endif %}
+  {% if perms.catalog.delete_author %}
+  <a href="{% url 'author-delete' author.pk %}" class="text-danger">
+    <svg class="icon">
+      <use xlink:href="#trash" />
+    </svg>
+    Delete
+  </a>{% endif %}
+</p>
 
 <h2 class="heading">Books by this author</h2>
 {% if author.book_set.all %}

@@ -12,6 +12,23 @@
 <p><strong>Language:</strong> {{ book.language }}</p>
 <p><strong>ISBN:</strong> {{ book.isbn }}</p>
 
+<p>
+  {% if perms.catalog.change_book %}
+  <a href="{% url 'book-update' book.pk %}">
+    <svg class="icon">
+      <use xlink:href="#pencil" />
+    </svg>
+    Update
+  </a>
+  {% endif %}
+  {% if perms.catalog.delete_book%}
+  <a href="{% url 'book-delete' book.pk %}" class="text-danger">
+    <svg class="icon">
+      <use xlink:href="#trash" />
+    </svg>
+    Delete
+  </a>{% endif %}
+</p>
 
 <h2 class="heading">Copies</h2>
 {% if book.bookinstance_set.all %}
